@@ -1,0 +1,21 @@
+import requests
+from bs4 import BeautifulSoup
+
+
+def get_html(url):
+    r = requests.get(url)
+    r.encoding = 'utf8'
+    return r.text
+
+def get_link(html):
+    soup = BeautifulSoup(html, 'lxml')
+    head = soup.find('div', id='section-content').find_all('a', class_="entry-header")
+    for i in head:
+        link = 'https://3dnews.ru' + i.get('href')
+        heads= i.find('h1').string
+        data = {'head': heads,
+                 'link': link}
+        print(data)
+
+
+data = get_link(get_html('https://3dnews.ru/news'))
