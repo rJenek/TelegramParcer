@@ -72,3 +72,8 @@ def callback_minute(context: telegram.ext.CallbackContext):
                              text='One message every minute')
 
 job_minute = j.run_repeating(callback_minute, interval=60, first=0)
+
+
+
+
+https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets
