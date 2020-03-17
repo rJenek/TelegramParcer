@@ -50,3 +50,25 @@ dispatcher.add_handler(echo_handler)
 
 
 updater.start_polling()
+
+это все работает
+
+а это не работает
+это нужно для оттправки 1 сообщения
+bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.") 
+
+а это отправляет сообщение с определенным периодом
+import telegram.ext
+from telegram.ext import Updater
+import logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                     level=logging.INFO)
+
+u = Updater('1082950184:AAGljNcuLXsUp4t7oqIPQ9Eh81Z88Zoc7kk', use_context=True)
+j = u.job_queue
+
+def callback_minute(context: telegram.ext.CallbackContext):
+    context.bot.send_message(chat_id='@tyrma299',
+                             text='One message every minute')
+
+job_minute = j.run_repeating(callback_minute, interval=60, first=0)
