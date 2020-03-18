@@ -1,79 +1,112 @@
+## Токен и библ
+#import telegram
+#bot = telegram.Bot(token='1082950184:AAGljNcuLXsUp4t7oqIPQ9Eh81Z88Zoc7kk')
 
-# import telegram
-# bot = telegram.Bot(token='1082950184:AAGljNcuLXsUp4t7oqIPQ9Eh81Z88Zoc7kk')
-# print(bot.get_me())
+## Возможности бота относительно коммуникации
+# from telegram.ext import Updater, MessageHandler, Filters
+# updater = Updater(token='1082950184:AAGljNcuLXsUp4t7oqIPQ9Eh81Z88Zoc7kk', use_context=True)
+#
+# dispatcher = updater.dispatcher
 
-from telegram.ext import Updater
-updater = Updater(token='1082950184:AAGljNcuLXsUp4t7oqIPQ9Eh81Z88Zoc7kk', use_context=True)
+# import logging
+# logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+#                      level=logging.INFO)
+## Команда для бота
+# def start(update, context):
+#     context.bot.send_message(chat_id=update.effective_chat.id, text="Я бот, ты крот")
+#
+# from telegram.ext import CommandHandler
+# start_handler = CommandHandler('start', start)
+# dispatcher.add_handler(start_handler)
+#
+# def start(update, context):
+#     context.bot.send_message(chat_id=update.effective_chat.id, text="всем спасибо всем пока")
+#
+# from telegram.ext import CommandHandler
+# start_handler = CommandHandler('end', start)
+# dispatcher.add_handler(start_handler)
+#
+# def start(update, context):
+#     context.bot.send_message(chat_id=update.effective_chat.id, text="тупа гений")
+#
+# from telegram.ext import CommandHandler
+# start_handler = CommandHandler('jeka', start)
+# dispatcher.add_handler(start_handler)
+#
+# def start(update, context):
+#     context.bot.send_message(chat_id=update.effective_chat.id, text="клавн")
+#
+# from telegram.ext import CommandHandler
+# start_handler = CommandHandler('andrey', start)
+# dispatcher.add_handler(start_handler)
+#
+## Функция отправки копии сообщения (которое ему отправить)
+# def echo(update, context):
+#     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+#
+# from telegram.ext import MessageHandler, Filters
+# echo_handler = MessageHandler(Filters.text, echo)
+# dispatcher.add_handler(echo_handler)
+## Отправка сообщений капсом
+# def caps(update, context):
+#     text_caps = ' '.join(context.args).upper()
+#     context.bot.send_message(chat_id=update.effective_chat.id, text=text_caps)
+#
+# caps_handler = CommandHandler('caps', caps)
+# dispatcher.add_handler(caps_handler)
+## Если ошибка в написании команды
+# def unknown(update, context):
+#     context.bot.send_message(chat_id=update.effective_chat.id, text="Ты быканул?")
+#
+# unknown_handler = MessageHandler(Filters.command, unknown)
+# dispatcher.add_handler(unknown_handler)
 
-dispatcher = updater.dispatcher
+# Отправка 1 сообщения
+# bot.send_message(chat_id='@tyrma299', text="I'm sorry Dave I'm afraid I can't do that.")
 
-import logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
+# Отправка сообщения каждые с определенным периодои
+# import telegram.ext
+# from telegram.ext import Updater
+#
+# u = Updater('1082950184:AAGljNcuLXsUp4t7oqIPQ9Eh81Z88Zoc7kk', use_context=True)
+# j = u.job_queue
+#
+# def callback_minute(context: telegram.ext.CallbackContext):
+#     context.bot.send_message(chat_id='@tyrma299',text='One message every minute')
+#
+# job_minute = j.run_repeating(callback_minute, interval=60, first=0)
 
-def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Я бот, ты крот")
-
-from telegram.ext import CommandHandler
-start_handler = CommandHandler('start', start)
-dispatcher.add_handler(start_handler)
-
-def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="всем спасибо всем пока")
-
-from telegram.ext import CommandHandler
-start_handler = CommandHandler('end', start)
-dispatcher.add_handler(start_handler)
-
-def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="тупа гений")
-
-from telegram.ext import CommandHandler
-start_handler = CommandHandler('jeka', start)
-dispatcher.add_handler(start_handler)
-
-def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="клавн")
-
-from telegram.ext import CommandHandler
-start_handler = CommandHandler('andrey', start)
-dispatcher.add_handler(start_handler)
+##Разные возможности отправки сообщения(текст, ссылка, фото или фидео)
+# bot.send_message(chat_id='@tyrma299',
+#                  text="*bold* _italic_ `fixed width font` [link](http://google.com).",
+#                  parse_mode=telegram.ParseMode.MARKDOWN)
 
 
-def echo(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+# bot.send_message(chat_id='@tyrma299',
+#                  text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.',
+#                  parse_mode=telegram.ParseMode.HTML)
 
-from telegram.ext import MessageHandler, Filters
-echo_handler = MessageHandler(Filters.text, echo)
-dispatcher.add_handler(echo_handler)
+# bot.send_photo(chat_id='@tyrma299', photo=open('/Users/rogest/Desktop/prosto.png', 'rb'))
 
+# bot.send_photo(chat_id='@tyrma299', photo='https://pbs.twimg.com/profile_images/2881220369/2b27ac38b43b17a8c5eacfc443ce3384_400x400.jpeg')
 
-updater.start_polling()
+# bot.send_document(chat_id='@tyrma299', document=open('/Users/rogest/Desktop/Модель оси.docx', 'rb')
+## Неудавешеся меню
+# def build_menu(buttons,
+#                n_cols,
+#                header_buttons=None,
+#                footer_buttons=None):
+#     menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
+#     if header_buttons:
+#         menu.insert(0, [header_buttons])
+#     if footer_buttons:
+#         menu.append([footer_buttons])
+#     return menu
+#     button_list = [
+#         InlineKeyboardButton("col1", callback_data=...),
+#         InlineKeyboardButton("col2", callback_data=...),
+#         InlineKeyboardButton("row 2", callback_data=...)
+#     ]
+#     reply_markup = InlineKeyboardMarkup(util.build_menu(button_list, n_cols=2))
+#     bot.send_message(text, "A two-column menu", reply_markup=reply_markup)
 
-это все работает
-
-а это не работает
-это нужно для оттправки 1 сообщения
-bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.") 
-
-а это отправляет сообщение с определенным периодом
-import telegram.ext
-from telegram.ext import Updater
-import logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
-
-u = Updater('1082950184:AAGljNcuLXsUp4t7oqIPQ9Eh81Z88Zoc7kk', use_context=True)
-j = u.job_queue
-
-def callback_minute(context: telegram.ext.CallbackContext):
-    context.bot.send_message(chat_id='@tyrma299',
-                             text='One message every minute')
-
-job_minute = j.run_repeating(callback_minute, interval=60, first=0)
-
-
-
-
-https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets
