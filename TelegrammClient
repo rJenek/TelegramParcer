@@ -7,3 +7,20 @@ api_hash = '31734c3fb8c64a98d3b165d2a2c3ed58'
 
 with TelegramClient('anon', api_id, api_hash) as client:
     client.loop.run_until_complete(client.send_message('@tyrma299', 'Привет'))
+    
+client = TelegramClient('anon', api_id, api_hash)
+
+async def main():
+    me = await client.get_me()
+    ##dannie obo mne
+    print(me.stringify())
+
+    username = me.username
+    ##tyt ponyatno
+    print(username)
+    print(me.phone)
+    ##eto vivodit vse dialogy i ih id
+    async for dialog in client.iter_dialogs():
+        print(dialog.name, 'has ID', dialog.id)
+with client:
+    client.loop.run_until_complete(main())
