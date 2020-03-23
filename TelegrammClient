@@ -1,1 +1,9 @@
+##Запускать с впн и это клиент
 
+from telethon import TelegramClient
+
+api_id = 991879
+api_hash = '31734c3fb8c64a98d3b165d2a2c3ed58'
+
+with TelegramClient('anon', api_id, api_hash) as client:
+    client.loop.run_until_complete(client.send_message('@tyrma299', 'Привет'))
