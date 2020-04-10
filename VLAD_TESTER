@@ -1,0 +1,30 @@
+from telethon import TelegramClient, sync
+from telethon.tl.functions.contacts import ImportContactsRequest
+from telethon.tl.types import InputPhoneContact
+from time import sleep
+
+api_id = 991879
+api_hash = '31734c3fb8c64a98d3b165d2a2c3ed58'
+phone = "+79160742956"
+
+client = TelegramClient('anon', api_id, api_hash).start()
+
+client.sign_in(phone)
+
+phone_numbers = open("/Users/rogest/Desktop/test.txt", 'r')
+phones = open('/Users/rogest/Desktop/test1.txt', 'a', encoding='utf8')
+x = int(1)
+for phone_number in phone_numbers:
+    contact = InputPhoneContact(client_id=0, phone=phone_number, first_name=phone_number, last_name=phone_number)
+    result = client(ImportContactsRequest([contact]))
+    print(result.stringify())
+    if result.popular_invites:
+        phones.write("Номер не добавлен: " + phone_number)
+        print(x, ") Номер не добавлен: ", phone_number)
+        x += 1
+        sleep(7)
+    else:
+        phones.write("Номер добавлен: " + phone_number)
+        print(x, ") Номер добавлен: ", phone_number)
+        x += 1
+        sleep(7)
