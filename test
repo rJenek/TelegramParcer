@@ -26,3 +26,13 @@ if __name__ == "__main__":
 
 
 последние 2 задания()
+я сделал     print(data["bomonque"]["iu"]["iu10"]["cozers"]) а, у лехи взял [0] и [1] и получилось все
+             print(data["bomonque"]["fn"]["fn-12"]["cozers"])
+
+
+import json
+
+with open('/Users/rogest/Desktop/data.json', 'r') as json_data:
+    data = json.load(json_data)
+    print(data["bomonque"][0]["iu"][1]["iu10"][0]["cozers"])
+    print(data["bomonque"][1]["fn"][0]["fn-12"][0]["cozers"])
