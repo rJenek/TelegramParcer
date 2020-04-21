@@ -36,3 +36,18 @@ with open('/Users/rogest/Desktop/data.json', 'r') as json_data:
     data = json.load(json_data)
     print(data["bomonque"][0]["iu"][1]["iu10"][0]["cozers"])
     print(data["bomonque"][1]["fn"][0]["fn-12"][0]["cozers"])
+
+
+
+последнее задание
+
+from bs4 import BeautifulSoup
+import requests as req
+
+resp = req.get("https://www.cbr.ru/currency_base/daily")
+
+soup = BeautifulSoup(resp.text, 'lxml')
+
+# print(soup.prettify())
+for tag in soup.find_all("tr"):
+        print("{1}".format(tag.name, tag.text))
