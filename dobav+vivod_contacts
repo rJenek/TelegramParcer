@@ -5,7 +5,7 @@ from telethon import functions, types
 
 api_id = *******
 api_hash = '31734c3****************58'
-# phone = "+7********6"
+# phone = "+7*******6"
 
 client = TelegramClient('anon', api_id, api_hash).start()
 
